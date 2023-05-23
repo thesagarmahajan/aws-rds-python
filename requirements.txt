@@ -1,1 +1,2 @@
-
+Flask==2.3.2
+mysql_connector_repackaged==0.3.1
