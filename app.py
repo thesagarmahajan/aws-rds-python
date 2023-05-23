@@ -6,7 +6,7 @@ if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
 
 try:
-    con = mysql.connector.connect(host="mydb.c284m4zoh3wq.ap-south-1.rds.amazonaws.com",user="admin",password="sagar123",database="myapp")
+    con = mysql.connector.connect(host="mydatabase.c284m4zoh3wq.ap-south-1.rds.amazonaws.com",user="admin",password="sagar123",database="myapp")
     con.autocommit=True
     cur = con.cursor(dictionary=True)
 except:
