@@ -2,10 +2,17 @@
 
 # Download and setup
 
-Step-1: Creating venv
-  ```bash
+Step-1: Creating & activating venv
+  Windows:
+  ```powershell
     python -m venv venv
     ./venv/Scripts/activate
+  ```
+  
+  Linux:
+  ```bash
+    python -m venv venv
+    source venv/bin/activate
   ```
 
 Step-2: Installing Dependencies
@@ -13,9 +20,15 @@ Step-2: Installing Dependencies
     pip install -r requirements.txt
   ```
 Step-2: Running application
-Powershell
+Windows:
 ```bash
   > $env:PYTHONDONTWRITEBYTECODE=1;$env:FLASK_APP="app";$env:FLASK_ENV = "development"
+  > flask run
+```
+
+Linux:
+```bash
+  > export PYTHONDONTWRITEBYTECODE=1 FLASK_APP="app" FLASK_ENV="development"
   > flask run
 ```
 
@@ -28,6 +41,10 @@ Powershell
   Windows-powershell-Solution:
   ```bash
     $env:PYTHONDONTWRITEBYTECODE=1
+  ```
+  Linux:
+  ```bash
+  export PYTHONDONTWRITEBYTECODE=1
   ```
 
 
