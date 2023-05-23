@@ -1,10 +1,14 @@
 from flask import Flask, request
 import mysql.connector
+
 app = Flask(__name__)
 
-con = mysql.connector.connect(host="mydb.c284m4zoh3wq.ap-south-1.rds.amazonaws.com",user="admin",password="sagar123",database="myapp")
-con.autocommit=True
-cur = con.cursor(dictionary=True)
+try:
+    con = mysql.connector.connect(host="mydb.c284m4zoh3wq.ap-south-1.rds.amazonaws.com",user="admin",password="sagar123",database="myapp")
+    con.autocommit=True
+    cur = con.cursor(dictionary=True)
+except:
+    print('An exception occurred')
 
 @app.route("/")
 def home():
@@ -12,8 +16,12 @@ def home():
 
 @app.route("/getrecords")
 def get_records():
-    cur.execute("select * from users")
-    result = cur.fetchall()
+    try:
+        cur.execute("select * from users")
+        result = cur.fetchall()
+    except:
+        return "Internal Error"
+    
     if len(result)>0:
         return {"payload":result}
     else:
@@ -21,8 +29,11 @@ def get_records():
 
 @app.route("/addrecord", methods=["post"])
 def add_record():
-    data = request.form
-    print(data)
-    cur.execute(f"INSERT INTO users(name, email, password) VALUES('{data['name']}', '{data['email']}', '{data['password']}')")
-    return "Record Added"
+    try:
+        data = request.form
+        cur.execute(f"INSERT INTO users(name, email, password) VALUES('{data['name']}', '{data['email']}', '{data['password']}')")
+        return "Record Added"
+    except:
+        return "Internal Error"
+    
 
