@@ -2,10 +2,7 @@ from flask import Flask, request
 import mysql.connector
 
 app = Flask(__name__)
-print(__name__)
-if __name__ == '__main__':
-    print("************")
-    app.run(host='0.0.0.0', port=8088, debug=True)
+
 
 
 
@@ -34,7 +31,10 @@ def add_record():
         return "Record Added"
     except:
         return "Internal Error"
-    
+print(__name__)
+if __name__ == '__main__':
+    print("************")
+    app.run(host='0.0.0.0', port=8088, debug=True)
 try:
     con = mysql.connector.connect(host="mydatabase.c284m4zoh3wq.ap-south-1.rds.amazonaws.com",user="admin",password="sagar123",database="myapp")
     con.autocommit=True
