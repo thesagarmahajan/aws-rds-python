@@ -5,7 +5,7 @@ app = Flask(__name__)
 print(__name__)
 if __name__ == '__main__':
     print("************")
-    app.run(host='0.0.0.0', port=80, debug=True)
+    app.run(host='0.0.0.0', port=8080, debug=True)
 
 try:
     con = mysql.connector.connect(host="mydatabase.c284m4zoh3wq.ap-south-1.rds.amazonaws.com",user="admin",password="sagar123",database="myapp")
