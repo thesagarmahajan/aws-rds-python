@@ -7,12 +7,7 @@ if __name__ == '__main__':
     print("************")
     app.run(host='0.0.0.0', port=8088, debug=True)
 
-try:
-    con = mysql.connector.connect(host="mydatabase.c284m4zoh3wq.ap-south-1.rds.amazonaws.com",user="admin",password="sagar123",database="myapp")
-    con.autocommit=True
-    cur = con.cursor(dictionary=True)
-except:
-    print('An exception occurred')
+
 
 @app.route("/")
 def home():
@@ -40,4 +35,9 @@ def add_record():
     except:
         return "Internal Error"
     
-
+try:
+    con = mysql.connector.connect(host="mydatabase.c284m4zoh3wq.ap-south-1.rds.amazonaws.com",user="admin",password="sagar123",database="myapp")
+    con.autocommit=True
+    cur = con.cursor(dictionary=True)
+except:
+    print('An exception occurred')
